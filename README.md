@@ -1,9 +1,8 @@
-# ⚽ Football Ticket Booking System
-### Database Design & SQL Assignment
+# Football Ticket Booking System
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 1. [Project Overview](#project-overview)
 2. [Entity Relationship Diagram (ERD)](#entity-relationship-diagram-erd)
@@ -23,7 +22,6 @@ This project implements a **Football Ticket Booking System** using a relational 
 | **Database** | PostgreSQL |
 | **Tables** | Users, Matches, Bookings |
 | **Total Queries** | 7 |
-| **Concepts Covered** | WHERE, ILIKE, IS NULL, COALESCE, INNER JOIN, LEFT JOIN, Subquery, LIMIT/OFFSET |
 
 ---
 
@@ -206,7 +204,7 @@ INSERT INTO Bookings (booking_id, user_id, match_id, seat_number, payment_status
 ## SQL Queries
 
 > 📥 **The full query file is available in this repository.**
-> Download **`query.sql`** from GitHub and run it in Beekeeper Studio (or any PostgreSQL client) after completing the setup steps below.
+> Download **`Query.sql`** from GitHub and run it in Beekeeper Studio (or any PostgreSQL client) after completing the setup steps below.
 
 ---
 
@@ -368,20 +366,15 @@ You need two things installed on your PC:
 
 ### ✅ Step 4 — Download and Run the Query File
 
-1. Go to this GitHub repository
-2. Download the file **`query.sql`**
-3. In Beekeeper Studio, open the SQL Editor
-4. Drag and drop `query.sql` into the editor window — or open it via **File → Open**
-5. Run each query one by one, or select all and run together
-
-> 💡 **Tip:** You can highlight just one query and press `Ctrl + Enter` to run only that selected query.
+1. Download the file **`Query.sql`**
+2. In Beekeeper Studio, open Query.sql file
+3. Run each query one by one
 
 ---
 
 ### ✅ Step 5 — Verify the Output
 
-After running each query, compare your results with the **Output tables** shown in the [SQL Queries](#sql-queries) section above. If the results match, your setup is working correctly.
+After running each query, compare the results with the **Output tables** shown in the [SQL Queries](#sql-queries) section above. If the results match, your setup is working correctly.
 
 ---
 
-*Football Ticket Booking System — SQL Assignment*
