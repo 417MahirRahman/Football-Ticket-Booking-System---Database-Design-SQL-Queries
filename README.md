@@ -27,9 +27,7 @@ This project implements a **Football Ticket Booking System** using a relational 
 
 ## Entity Relationship Diagram (ERD)
 
-> 📌 **Place your ERD image below:**
-
-![ERD Diagram](./erd.png)
+![ERD Diagram](https://github.com/user-attachments/assets/55c614a5-6451-492d-bed2-19aad6522ad6)
 
 *Figure 1 — ERD for the Football Ticket Booking System using Crow's Foot notation.*
 
