@@ -27,9 +27,11 @@ This project implements a **Football Ticket Booking System** using a relational 
 
 ## Entity Relationship Diagram (ERD)
 
-![ERD Diagram](https://github.com/user-attachments/assets/55c614a5-6451-492d-bed2-19aad6522ad6)
-
-<p align='center'>*Figure 1 — ERD for the Football Ticket Booking System using Crow's Foot notation.*</p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/55c614a5-6451-492d-bed2-19aad6522ad6" alt="ERD Diagram" />
+  <br/>
+  <em>Figure 1 — ERD for the Football Ticket Booking System using Crow's Foot notation.</em>
+</p>
 
 ### Relationships
 
@@ -44,6 +46,37 @@ This project implements a **Football Ticket Booking System** using a relational 
 ## Database Schema
 
 ### Table 1 — Users
+
+| user_id | full_name | email | role | phone_number |
+|---|---|---|---|---|
+| 1 | Tanvir Rahman | tanvir@mail.com | Football Fan | +8801711111111 |
+| 2 | Asif Haque | asif@mail.com | Football Fan | +8801722222222 |
+| 3 | Sajjad Rahman | sajjad@mail.com | Ticket Manager | +8801733333333 |
+| 4 | Jannat Ara | jannat@mail.com | Football Fan | NULL |
+
+### Table 2 — Matches
+
+| match_id | fixture | tournament_category | base_ticket_price | match_status |
+|---|---|---|---|---|
+| 101 | Real Madrid vs Barcelona | Champions League | 150.00 | Available |
+| 102 | Man City vs Liverpool | Premier League | 120.00 | Selling Fast |
+| 103 | Bayern Munich vs PSG | Champions League | 130.00 | Available |
+| 104 | AC Milan vs Inter Milan | Serie A | 90.00 | Sold Out |
+| 105 | Juventus vs Roma | Serie A | 80.00 | Available |
+
+### Table 3 — Bookings
+
+| booking_id | user_id | match_id | seat_number | payment_status | total_cost |
+|---|---|---|---|---|---|
+| 501 | 1 | 101 | A-12 | Confirmed | 150.00 |
+| 502 | 1 | 102 | B-04 | Confirmed | 120.00 |
+| 503 | 2 | 101 | A-13 | Confirmed | 150.00 |
+| 504 | 2 | 101 | NULL | NULL | 150.00 |
+| 505 | 3 | 102 | C-20 | Pending | 120.00 |
+
+# Create Tables Using This
+
+### Ceeate Users Table
 
 ```sql
 -- DROP TABLES IF THEY ALREADY EXIST TO PREVENT CONFLICTS
@@ -66,7 +99,7 @@ CREATE TABLE Users (
 
 ---
 
-### Table 2 — Matches
+### Ceeate Matches Table
 
 ```sql
 CREATE TABLE Matches (
@@ -87,7 +120,7 @@ CREATE TABLE Matches (
 
 ---
 
-### Table 3 — Bookings
+### Ceeate Bookings Table
 
 ```sql
 CREATE TABLE Bookings (
@@ -123,13 +156,6 @@ INSERT INTO Users (user_id, full_name, email, role, phone_number) VALUES
 (4, 'Jannat Ara',   'jannat@mail.com', 'Football Fan',   NULL);
 ```
 
-| user_id | full_name | email | role | phone_number |
-|---|---|---|---|---|
-| 1 | Tanvir Rahman | tanvir@mail.com | Football Fan | +8801711111111 |
-| 2 | Asif Haque | asif@mail.com | Football Fan | +8801722222222 |
-| 3 | Sajjad Rahman | sajjad@mail.com | Ticket Manager | +8801733333333 |
-| 4 | Jannat Ara | jannat@mail.com | Football Fan | NULL |
-
 ---
 
 ### Matches
@@ -142,14 +168,6 @@ INSERT INTO Matches (match_id, fixture, tournament_category, base_ticket_price, 
 (104, 'AC Milan vs Inter Milan',  'Serie A',           90.00, 'Sold Out'),
 (105, 'Juventus vs Roma',         'Serie A',           80.00, 'Available');
 ```
-
-| match_id | fixture | tournament_category | base_ticket_price | match_status |
-|---|---|---|---|---|
-| 101 | Real Madrid vs Barcelona | Champions League | 150.00 | Available |
-| 102 | Man City vs Liverpool | Premier League | 120.00 | Selling Fast |
-| 103 | Bayern Munich vs PSG | Champions League | 130.00 | Available |
-| 104 | AC Milan vs Inter Milan | Serie A | 90.00 | Sold Out |
-| 105 | Juventus vs Roma | Serie A | 80.00 | Available |
 
 ---
 
@@ -164,20 +182,14 @@ INSERT INTO Bookings (booking_id, user_id, match_id, seat_number, payment_status
 (505, 3, 102, 'C-20', 'Pending',   120.00);
 ```
 
-| booking_id | user_id | match_id | seat_number | payment_status | total_cost |
-|---|---|---|---|---|---|
-| 501 | 1 | 101 | A-12 | Confirmed | 150.00 |
-| 502 | 1 | 102 | B-04 | Confirmed | 120.00 |
-| 503 | 2 | 101 | A-13 | Confirmed | 150.00 |
-| 504 | 2 | 101 | NULL | NULL | 150.00 |
-| 505 | 3 | 102 | C-20 | Pending | 120.00 |
+
 
 ---
 
 ## SQL Queries
 
-> **The full query file is available in this repository.**
-> Download **`Query.sql`** from GitHub and run it in Beekeeper Studio or any PostgreSQL client.
+ **The full query file is available in this repository.**
+ Download **`Query.sql`** from GitHub and run it in Beekeeper Studio or any PostgreSQL client.
 
 ---
 
@@ -234,5 +246,4 @@ You need two things installed on your PC:
 2. In Beekeeper Studio, open Query.sql file
 3. Run each query one by one
 
----
 
