@@ -29,7 +29,7 @@ This project implements a **Football Ticket Booking System** using a relational 
 
 ![ERD Diagram](https://github.com/user-attachments/assets/55c614a5-6451-492d-bed2-19aad6522ad6)
 
-*Figure 1 — ERD for the Football Ticket Booking System using Crow's Foot notation.*
+<p align='center'>*Figure 1 — ERD for the Football Ticket Booking System using Crow's Foot notation.*</p>
 
 ### Relationships
 
@@ -64,14 +64,6 @@ CREATE TABLE Users (
 );
 ```
 
-| Field | Type | Constraint |
-|---|---|---|
-| `user_id` | INT | Primary Key |
-| `full_name` | VARCHAR(20) | — |
-| `email` | VARCHAR(30) | UNIQUE |
-| `role` | VARCHAR(20) | CHECK: `'Ticket Manager'` or `'Football Fan'` |
-| `phone_number` | VARCHAR(20) | Nullable |
-
 ---
 
 ### Table 2 — Matches
@@ -92,14 +84,6 @@ CREATE TABLE Matches (
                  match_status = 'Postponed')
 );
 ```
-
-| Field | Type | Constraint |
-|---|---|---|
-| `match_id` | INT | Primary Key |
-| `fixture` | VARCHAR(30) | — |
-| `tournament_category` | VARCHAR(20) | — |
-| `base_ticket_price` | DECIMAL(10,2) | CHECK: >= 0 |
-| `match_status` | VARCHAR(20) | CHECK: 4 allowed values |
 
 ---
 
@@ -124,15 +108,6 @@ CREATE TABLE Bookings (
                  payment_status = 'Refunded')
 );
 ```
-
-| Field | Type | Constraint |
-|---|---|---|
-| `booking_id` | INT | Primary Key |
-| `user_id` | INT | Foreign Key → Users |
-| `match_id` | INT | Foreign Key → Matches |
-| `seat_number` | VARCHAR(20) | Nullable |
-| `payment_status` | VARCHAR(20) | CHECK: 4 allowed values |
-| `total_cost` | DECIMAL(10,2) | CHECK: >= 0 |
 
 ---
 
@@ -201,117 +176,8 @@ INSERT INTO Bookings (booking_id, user_id, match_id, seat_number, payment_status
 
 ## SQL Queries
 
-> 📥 **The full query file is available in this repository.**
-> Download **`Query.sql`** from GitHub and run it in Beekeeper Studio (or any PostgreSQL client) after completing the setup steps below.
-
----
-
-### Query 1 — Champions League Available Matches
-> Retrieve all upcoming football matches belonging to the `Champions League` where the match status is `Available`.
->
-> **Concepts:** `WHERE`, `AND`
-
-**Output:**
-
-| match_id | fixture | base_ticket_price |
-|---|---|---|
-| 101 | Real Madrid vs Barcelona | 150 |
-| 103 | Bayern Munich vs PSG | 130 |
-
----
-
-### Query 2 — Search Users by Name
-> Search for all users whose full names start with `Tanvir` or contain the phrase `Haque` (case-insensitive).
->
-> **Concepts:** `ILIKE`
-
-**Output:**
-
-| user_id | full_name | email |
-|---|---|---|
-| 1 | Tanvir Rahman | tanvir@mail.com |
-| 2 | Asif Haque | asif@mail.com |
-
----
-
-### Query 3 — Bookings with Missing Payment Status
-> Retrieve all booking records where the payment status is missing (`NULL`), replacing the empty result with `Action Required`.
->
-> **Concepts:** `IS NULL`, `COALESCE`
-
-**Output:**
-
-| booking_id | user_id | match_id | systematic_status |
-|---|---|---|---|
-| 504 | 2 | 101 | Action Required |
-
----
-
-### Query 4 — Booking Details with User and Match Info
-> Retrieve match booking details along with the user's full name and the scheduled match fixture teams.
->
-> **Concepts:** `INNER JOIN`
-
-**Output:**
-
-| booking_id | full_name | fixture | total_cost |
-|---|---|---|---|
-| 501 | Tanvir Rahman | Real Madrid vs Barcelona | 150 |
-| 502 | Tanvir Rahman | Man City vs Liverpool | 120 |
-| 503 | Asif Haque | Real Madrid vs Barcelona | 150 |
-| 504 | Asif Haque | Real Madrid vs Barcelona | 150 |
-| 505 | Sajjad Rahman | Man City vs Liverpool | 120 |
-
----
-
-### Query 5 — All Users Including Those with No Bookings
-> Display a comprehensive list of all users and their booking IDs, ensuring that fans who have never bought a ticket are still listed.
->
-> **Concepts:** `LEFT JOIN`
-
-**Output:**
-
-| user_id | full_name | booking_id |
-|---|---|---|
-| 1 | Tanvir Rahman | 501 |
-| 1 | Tanvir Rahman | 502 |
-| 2 | Asif Haque | 503 |
-| 2 | Asif Haque | 504 |
-| 3 | Sajjad Rahman | 505 |
-| 4 | Jannat Ara | NULL |
-
----
-
-### Query 6 — Bookings Above Average Cost
-> Find all ticket bookings where the total cost is strictly higher than the average cost of all ticket bookings.
->
-> **Concepts:** `Subquery`, `AVG()`
-
-> Average = (150 + 120 + 150 + 150 + 120) / 5 = **138.00**
-
-**Output:**
-
-| booking_id | match_id | total_cost |
-|---|---|---|
-| 501 | 101 | 150 |
-| 503 | 101 | 150 |
-| 504 | 101 | 150 |
-
----
-
-### Query 7 — Top 2 Matches Skipping the Most Expensive
-> Retrieve the top 2 most expensive matches sorted by base ticket price, skipping the absolute highest premium match.
->
-> **Concepts:** `ORDER BY`, `LIMIT`, `OFFSET`
-
-> *Skips Real Madrid vs Barcelona at 150*
-
-**Output:**
-
-| match_id | fixture | base_ticket_price |
-|---|---|---|
-| 103 | Bayern Munich vs PSG | 130 |
-| 102 | Man City vs Liverpool | 120 |
+> **The full query file is available in this repository.**
+> Download **`Query.sql`** from GitHub and run it in Beekeeper Studio or any PostgreSQL client.
 
 ---
 
@@ -357,8 +223,8 @@ You need two things installed on your PC:
 
 1. In Beekeeper Studio, open the **SQL Editor** (top menu or sidebar)
 2. Copy and paste the full **CREATE TABLE** and **INSERT** SQL from the [Database Schema](#database-schema) and [Sample Data](#sample-data) sections above
-3. Click **Run** (or press `Ctrl + Enter`)
-4. You should see the 3 tables appear in the left sidebar under your database
+3. Click **Run**
+4. You will see the 3 tables appear in the left sidebar under your database
 
 ---
 
@@ -367,12 +233,6 @@ You need two things installed on your PC:
 1. Download the file **`Query.sql`**
 2. In Beekeeper Studio, open Query.sql file
 3. Run each query one by one
-
----
-
-### ✅ Step 5 — Verify the Output
-
-After running each query, compare the results with the **Output tables** shown in the [SQL Queries](#sql-queries) section above. If the results match, your setup is working correctly.
 
 ---
 
