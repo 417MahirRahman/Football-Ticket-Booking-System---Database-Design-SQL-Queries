@@ -54,6 +54,8 @@ This project implements a **Football Ticket Booking System** using a relational 
 | 3 | Sajjad Rahman | sajjad@mail.com | Ticket Manager | +8801733333333 |
 | 4 | Jannat Ara | jannat@mail.com | Football Fan | NULL |
 
+---
+
 ### Table 2 — Matches
 
 | match_id | fixture | tournament_category | base_ticket_price | match_status |
@@ -63,6 +65,8 @@ This project implements a **Football Ticket Booking System** using a relational 
 | 103 | Bayern Munich vs PSG | Champions League | 130.00 | Available |
 | 104 | AC Milan vs Inter Milan | Serie A | 90.00 | Sold Out |
 | 105 | Juventus vs Roma | Serie A | 80.00 | Available |
+
+---
 
 ### Table 3 — Bookings
 
@@ -74,9 +78,11 @@ This project implements a **Football Ticket Booking System** using a relational 
 | 504 | 2 | 101 | NULL | NULL | 150.00 |
 | 505 | 3 | 102 | C-20 | Pending | 120.00 |
 
-# Create Tables Using This
+---
 
-### Ceeate Users Table
+## Create Tables Using This
+
+### Create Users Table
 
 ```sql
 -- DROP TABLES IF THEY ALREADY EXIST TO PREVENT CONFLICTS
@@ -99,7 +105,7 @@ CREATE TABLE Users (
 
 ---
 
-### Ceeate Matches Table
+### Create Matches Table
 
 ```sql
 CREATE TABLE Matches (
@@ -120,7 +126,7 @@ CREATE TABLE Matches (
 
 ---
 
-### Ceeate Bookings Table
+### Create Bookings Table
 
 ```sql
 CREATE TABLE Bookings (
@@ -181,8 +187,6 @@ INSERT INTO Bookings (booking_id, user_id, match_id, seat_number, payment_status
 (504, 2, 101,  NULL,   NULL,       150.00),
 (505, 3, 102, 'C-20', 'Pending',   120.00);
 ```
-
-
 
 ---
 
